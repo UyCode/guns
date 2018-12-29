@@ -103,7 +103,7 @@ public class ActivationController extends BaseController {
                 System.out.println("验证成功！");
             } else {
                 System.out.println("验证失败！");
-                model.addAttribute("xxx", "短信验证失败，无法激活！");
+                model.addAttribute("xxx", "短信验证失败，无法修改！");
                 return "/activation.html";
             }
         } catch (Exception e) {
@@ -119,11 +119,11 @@ public class ActivationController extends BaseController {
                 user.setPassword(newMd5);
                 user.setActivation(1);
                 user.updateById();
-                model.addAttribute("yyy", "用户激活成功！");
+                model.addAttribute("yyy", "用户密码修改成功！");
                 return "/login.html";
             }
         } else {
-                model.addAttribute("xxx", "用户名不正确，无法激活！");
+                model.addAttribute("xxx", "用户名不正确，无法修改！");
                 return "/activation.html";
         }
 
