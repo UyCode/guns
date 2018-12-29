@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <#input type="hidden" id="id" name="" value="${item.id}" underline="true"/>
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="stime" name="开始时间" value="${item.stime}" underline="true"/>
+                            <#input id="etime" name="结束时间" value="${item.etime}" underline="true"/>
+                            <#input id="settime" name="设置时间" value="${item.settime}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="flag" name="标志位" value="${item.flag}" underline="true"/>
+                            <#select id="scname" name="学校名称"  value="${item.scname}" underline="true" >
+                            </#select>
+                            <#select id="coname" name="学院名称"  value="${item.coname}" underline="true" >
+                            </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TaskInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TaskInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/task/task/task_info.js"></script>
+@}

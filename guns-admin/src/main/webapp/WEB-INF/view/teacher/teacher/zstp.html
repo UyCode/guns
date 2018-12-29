@@ -1,0 +1,635 @@
+<!DOCTYPE html>  
+<meta charset="utf-8">  
+<title>tree</title>
+<style>  
+  
+	.node {  
+	  cursor: pointer;  
+	}  
+	  
+	.node circle {  
+	  fill: #fff;  
+	  stroke: steelblue;  
+	  stroke-width: 1.5px;  
+	}  
+	  
+	.node text {  
+	  font: 10px sans-serif;  
+	}  
+	  
+	.link {  
+	  fill: none;  
+	  stroke: #ccc;  
+	  stroke-width: 1.5px;  
+	}  
+	.tree{
+		width: 800px;
+		height: 800px;
+		margin: 0 auto;
+		background: #E0E0E0;
+	}
+	.tree svg{
+	  	width: 100%;
+	  	height: 100%;
+	}
+  
+</style>  
+<body>  
+	
+	<div class="tree" id="tree"></div>
+	
+<script src="${ctxPath}/static/modular/teacher/teacher/d3.v3.min.js"></script>
+<script>  
+var json = [  
+  {  
+  "name": "湖南大学",  
+  "parent": "null",  
+  "children": [  
+    {  
+      "name": "新闻传播与影视艺术学院",
+      "parent": "湖南大学",
+      "children": [
+      	{  "name": "徐  琼",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "崔炼农",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "阳美燕",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "唐克龙",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "吴月娥",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "陶贤都",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "王  玮",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "孙  起",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "刘社瑞",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "彭祝斌",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "向志强",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "邓向阳",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "陈道珍",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "孙玉玲",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "胡耀华",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "戴  松",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "梅文慧",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "鲁佑文",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "许  静",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "谢  伟",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "莫梅锋",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "李正良",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "胡朝雯",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "谭可可",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "周自祥",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "周清平",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "何春耕",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "苏美妮",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "廖艳君",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "黄学建",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "谢  莹",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "刘  琛",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "杨  莉",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "祝峻森",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "万  丽",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "夏艳艳",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "叶思展",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "陈  竹",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "袁涤非",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "谢伦浩",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "梅  慧",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "靳辉杰",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "王奕奕",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "袁慧敏",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "王美虹",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "陈  功",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "贾卫东",  "parent": "新闻传播与影视艺术学院"},
+        {  "name": "王一鸣",  "parent": "新闻传播与影视艺术学院"},
+		]
+    },
+    {  
+      "name": "马克思主义学院",  
+      "parent": "湖南大学",
+      "children":[
+      	{"name": "侯德泉","parent": "马克思主义学院" },
+      	{"name": "刘克利","parent": "马克思主义学院" },
+      	{"name": "刘晓玲","parent": "马克思主义学院" },
+      	{"name": "柳礼泉","parent": "马克思主义学院" },
+      	{"name": "龙佳解","parent": "马克思主义学院" },
+      	{"name": "龙献忠","parent": "马克思主义学院" },
+      	{"name": "栾永玉","parent": "马克思主义学院" },
+      	{"name": "罗仲尤","parent": "马克思主义学院" },
+      	{"name": "欧庭高","parent": "马克思主义学院" },
+      	{"name": "彭福扬","parent": "马克思主义学院" },
+      	{"name": "唐亚阳","parent": "马克思主义学院" },
+      	{"name": "姚利民","parent": "马克思主义学院" },
+      	{"name": "余小波","parent": "马克思主义学院" },
+      	{"name": "龙  兵","parent": "马克思主义学院" },
+      	{"name": "张国祚","parent": "马克思主义学院" },
+      	{"name": "黄梓根","parent": "马克思主义学院" },
+      	{"name": "尹世尤","parent": "马克思主义学院" },
+      	{"name": "刘红玉","parent": "马克思主义学院" },
+      	{"name": "赵冬初","parent": "马克思主义学院" },
+      	{"name": "张  君","parent": "马克思主义学院" },
+      	{"name": "刘玉珂","parent": "马克思主义学院" },
+      	{"name": "李菊英","parent": "马克思主义学院" },
+      	{"name": "阳桂红","parent": "马克思主义学院" },
+      	{"name": "蒋飞云","parent": "马克思主义学院" },
+      	{"name": "宁德业","parent": "马克思主义学院" },
+      	{"name": "丁军强","parent": "马克思主义学院" },
+      	{"name": "汪皎英","parent": "马克思主义学院" },
+      	{"name": "谌立平","parent": "马克思主义学院" },
+      	{"name": "谭首彰","parent": "马克思主义学院" },
+      	{"name": "刘光斌","parent": "马克思主义学院" },
+      	{"name": "熊泽明","parent": "马克思主义学院" },
+      	{"name": "刘莉萍","parent": "马克思主义学院" },
+      	{"name": "杨美新","parent": "马克思主义学院" },
+      	{"name": "周树辉","parent": "马克思主义学院" },
+      	{"name": "吴增礼","parent": "马克思主义学院" },
+      	{"name": "曹固强","parent": "马克思主义学院" },
+      	{"name": "彭江娥","parent": "马克思主义学院" },
+      	{"name": "常立农","parent": "马克思主义学院" },
+      	{"name": "王计然","parent": "马克思主义学院" },
+      	{"name": "王萌萌","parent": "马克思主义学院" },
+      	{"name": "曲  达","parent": "马克思主义学院" },
+      	{"name": "徐瑞鸿","parent": "马克思主义学院" },
+      	{"name": "吴晓欣","parent": "马克思主义学院" },
+      	{"name": "曾  兰","parent": "马克思主义学院" },
+      	{"name": "黄令坦","parent": "马克思主义学院" },
+      	{"name": "胡  荣","parent": "马克思主义学院" },
+      	{"name": "张  平","parent": "马克思主义学院" },
+      	{"name": "邱朝阳","parent": "马克思主义学院" },
+      	{"name": "张巧俊","parent": "马克思主义学院" },
+      	{"name": "孙宏云","parent": "马克思主义学院" },
+      	{"name": "易丙兰","parent": "马克思主义学院" },
+      	{"name": "夏泽宏","parent": "马克思主义学院" },
+      	{"name": "邓  验","parent": "马克思主义学院" },
+      	{"name": "曾广波","parent": "马克思主义学院" },
+      	{"name": "虞  法","parent": "马克思主义学院" },
+      	{"name": "刘  近","parent": "马克思主义学院" },
+      	{"name": "王国平","parent": "马克思主义学院" },
+      	{"name": "彭  萍","parent": "马克思主义学院" },
+      	{"name": "罗能生","parent": "马克思主义学院" },
+      	{"name": "龙太江","parent": "马克思主义学院" },
+      	{"name": "刘少华","parent": "马克思主义学院" },
+      	{"name": "蒋海松","parent": "马克思主义学院" },
+      	{"name": "黄大喜","parent": "马克思主义学院" },
+      	{"name": "陈厚丰","parent": "马克思主义学院" },
+	  ]
+    },
+	{  
+	  "name": "金融与统计学院",  
+	  "parent": "湖南大学",  
+	  "children": [   
+			{"name": "张  强","parent": "金融与统计学院" },
+			{"name": "杨胜刚","parent": "金融与统计学院" },
+			{"name": "乔海曙","parent": "金融与统计学院" },
+			{"name": "姚小义","parent": "金融与统计学院" },
+			{"name": "喻旭兰","parent": "金融与统计学院" },
+			{"name": "陈雪飞","parent": "金融与统计学院" },
+			{"name": "肖曼君","parent": "金融与统计学院" },
+			{"name": "刘晓兰","parent": "金融与统计学院" },
+			{"name": "何娟文","parent": "金融与统计学院" },
+			{"name": "吴志明","parent": "金融与统计学院" },
+			{"name": "邵新力","parent": "金融与统计学院" },
+			{"name": "许朝晖","parent": "金融与统计学院" },
+			{"name": "段  进","parent": "金融与统计学院" },
+			{"name": "龙  薇","parent": "金融与统计学院" },
+			{"name": "姜  昱","parent": "金融与统计学院" },
+			{"name": "王于栋","parent": "金融与统计学院" },
+			{"name": "叶  敏","parent": "金融与统计学院" },
+			{"name": "黄  颢","parent": "金融与统计学院" },
+			{"name": "陈  珂","parent": "金融与统计学院" },
+			{"name": "王忠生","parent": "金融与统计学院" },
+			{"name": "马  威","parent": "金融与统计学院" },
+			{"name": "刘晓剑","parent": "金融与统计学院" },
+			{"name": "成  程","parent": "金融与统计学院" },
+			{"name": "明  雷","parent": "金融与统计学院" },
+			{"name": "晏艳阳","parent": "金融与统计学院" },
+			{"name": "龙海明","parent": "金融与统计学院" },
+			{"name": "戴晓凤","parent": "金融与统计学院" },
+			{"name": "周鸿卫","parent": "金融与统计学院" },
+			{"name": "刘  轶","parent": "金融与统计学院" },
+			{"name": "张学陶","parent": "金融与统计学院" },
+			{"name": "周再清","parent": "金融与统计学院" },
+			{"name": "王修华","parent": "金融与统计学院" },
+			{"name": "陆国庆","parent": "金融与统计学院" },
+			{"name": "钟林超","parent": "金融与统计学院" },
+			{"name": "曹晓东","parent": "金融与统计学院" },
+			{"name": "伍  伟","parent": "金融与统计学院" },
+			{"name": "何  婧","parent": "金融与统计学院" },
+			{"name": "王天轶","parent": "金融与统计学院" },
+			{"name": "李连友","parent": "金融与统计学院" },
+			{"name": "陈迪红","parent": "金融与统计学院" },
+			{"name": "姜世杰","parent": "金融与统计学院" },
+			{"name": "张  琳","parent": "金融与统计学院" },
+			{"name": "刘  娜","parent": "金融与统计学院" },
+			{"name": "杨卫平","parent": "金融与统计学院" },
+			{"name": "邓庆彪","parent": "金融与统计学院" },
+			{"name": "张  虹","parent": "金融与统计学院" },
+			{"name": "刘  革","parent": "金融与统计学院" },
+			{"name": "沈建美","parent": "金融与统计学院" },
+			{"name": "王  敏","parent": "金融与统计学院" },
+			{"name": "张  宁","parent": "金融与统计学院" },
+			{"name": "王洁丹","parent": "金融与统计学院" },
+			{"name": "胡宗义","parent": "金融与统计学院" },
+			{"name": "蔡晓春","parent": "金融与统计学院" },
+			{"name": "李海奇","parent": "金融与统计学院" },
+			{"name": "谭德俊","parent": "金融与统计学院" },
+			{"name": "刘再华","parent": "金融与统计学院" },
+			{"name": "胡荣才","parent": "金融与统计学院" },
+			{"name": "陈  勇","parent": "金融与统计学院" },
+			{"name": "何平平","parent": "金融与统计学院" },
+			{"name": "马  勇","parent": "金融与统计学院" },
+			{"name": "宋丹丹","parent": "金融与统计学院" },
+			{"name": "梁巨方","parent": "金融与统计学院" },
+			{"name": "唐国豪","parent": "金融与统计学院" },
+			{"name": "林姿莹","parent": "金融与统计学院" },
+			{"name": "周四军","parent": "金融与统计学院" },
+			{"name": "曾昭法","parent": "金融与统计学院" },
+			{"name": "张立军","parent": "金融与统计学院" },
+			{"name": "王  瑛","parent": "金融与统计学院" },
+			{"name": "任英华","parent": "金融与统计学院" },
+			{"name": "陈黎明","parent": "金融与统计学院" },
+			{"name": "倪青山","parent": "金融与统计学院" },
+			{"name": "肖百龙","parent": "金融与统计学院" },
+			{"name": "谭朵朵","parent": "金融与统计学院" },
+			{"name": "孔志周","parent": "金融与统计学院" },
+			{"name": "马守荣","parent": "金融与统计学院" },
+			{"name": "苑  迪","parent": "金融与统计学院" },
+			{"name": "王小燕","parent": "金融与统计学院" },
+	  ]
+	},
+	{  
+	  "name": "机械与运载学院",  
+	  "parent": "湖南大学",  
+	  "children": [
+	  		{"name": "左  剑","parent": "机械与运载学院" },
+			{"name": "伍素珍","parent": "机械与运载学院" },
+			{"name": "刘江南","parent": "机械与运载学院" },
+			{"name": "刘  杰","parent": "机械与运载学院" },
+			{"name": "刘桂萍","parent": "机械与运载学院" },
+			{"name": "李  莉","parent": "机械与运载学院" },
+			{"name": "杨  华","parent": "机械与运载学院" },
+			{"name": "杨钦文","parent": "机械与运载学院" },
+			{"name": "张邦基","parent": "机械与运载学院" },
+			{"name": "张爱军","parent": "机械与运载学院" },
+			{"name": "陈久久","parent": "机械与运载学院" },
+			{"name": "陈  涛","parent": "机械与运载学院" },
+			{"name": "陈敏钧","parent": "机械与运载学院" },
+			{"name": "尚振涛","parent": "机械与运载学院" },
+			{"name": "金秋谈","parent": "机械与运载学院" },
+			{"name": "周长江","parent": "机械与运载学院" },
+			{"name": "胡  晖","parent": "机械与运载学院" },
+			{"name": "胡德安","parent": "机械与运载学院" },
+			{"name": "姜  潮","parent": "机械与运载学院" },
+			{"name": "徐道临","parent": "机械与运载学院" },
+			{"name": "卿宏军","parent": "机械与运载学院" },
+			{"name": "黄星梅","parent": "机械与运载学院" },
+			{"name": "谌霖霖","parent": "机械与运载学院" },
+			{"name": "熊德红","parent": "机械与运载学院" },
+			{"name": "王伏林","parent": "机械与运载学院" },
+			{"name": "尹韶辉","parent": "机械与运载学院" },
+			{"name": "冯  凯","parent": "机械与运载学院" },
+			{"name": "朱克忆","parent": "机械与运载学院" },
+			{"name": "刘  坚","parent": "机械与运载学院" },
+			{"name": "刘继常","parent": "机械与运载学院" },
+			{"name": "李  伟","parent": "机械与运载学院" },
+			{"name": "李茂君","parent": "机械与运载学院" },
+			{"name": "杨旭静","parent": "机械与运载学院" },
+			{"name": "杨  军","parent": "机械与运载学院" },
+			{"name": "何  洪","parent": "机械与运载学院" },
+			{"name": "张  凯","parent": "机械与运载学院" },
+			{"name": "陈根余","parent": "机械与运载学院" },
+			{"name": "陈艺勤","parent": "机械与运载学院" },
+			{"name": "余剑武","parent": "机械与运载学院" },
+			{"name": "范  叶","parent": "机械与运载学院" },
+			{"name": "金湘中","parent": "机械与运载学院" },
+			{"name": "金  滩","parent": "机械与运载学院" },
+			{"name": "周惦武","parent": "机械与运载学院" },
+			{"name": "周  聪","parent": "机械与运载学院" },
+			{"name": "胡仲勋","parent": "机械与运载学院" },
+			{"name": "胡跃强","parent": "机械与运载学院" },
+			{"name": "段辉高","parent": "机械与运载学院" },
+			{"name": "夏百战","parent": "机械与运载学院" },
+			{"name": "黄  帅","parent": "机械与运载学院" },
+			{"name": "龚志辉","parent": "机械与运载学院" },
+			{"name": "梁  军","parent": "机械与运载学院" },
+			{"name": "彭杰宏","parent": "机械与运载学院" },
+			{"name": "熊万里","parent": "机械与运载学院" },
+			{"name": "王晓钢","parent": "机械与运载学院" },
+			{"name": "方棋洪","parent": "机械与运载学院" },
+			{"name": "冯  慧","parent": "机械与运载学院" },
+			{"name": "任毅如","parent": "机械与运载学院" },
+			{"name": "刘伟纲","parent": "机械与运载学院" },
+			{"name": "刘  播","parent": "机械与运载学院" },
+			{"name": "李  甲","parent": "机械与运载学院" },
+			{"name": "杨  刚","parent": "机械与运载学院" },
+			{"name": "肖万伸","parent": "机械与运载学院" },
+			{"name": "邹伟生","parent": "机械与运载学院" },
+			{"name": "张见明","parent": "机械与运载学院" },
+			{"name": "张思进","parent": "机械与运载学院" },
+			{"name": "张  琼","parent": "机械与运载学院" },
+			{"name": "周加喜","parent": "机械与运载学院" },
+			{"name": "周  慧","parent": "机械与运载学院" },
+			{"name": "官  邑","parent": "机械与运载学院" },
+			{"name": "侯淑娟","parent": "机械与运载学院" },
+			{"name": "侯鹏飞","parent": "机械与运载学院" },
+			{"name": "符文彬","parent": "机械与运载学院" },
+			{"name": "彭  凡","parent": "机械与运载学院" },
+			{"name": "戴宏亮","parent": "机械与运载学院" },
+			{"name": "于德介","parent": "机械与运载学院" },
+			{"name": "王文格","parent": "机械与运载学院" },
+			{"name": "王珂娜","parent": "机械与运载学院" },
+			{"name": "陈  宁","parent": "机械与运载学院" },
+			{"name": "周华安","parent": "机械与运载学院" },
+			{"name": "钟  翔","parent": "机械与运载学院" },
+			{"name": "黄  晶","parent": "机械与运载学院" },
+			{"name": "彭晓燕","parent": "机械与运载学院" },
+			{"name": "程军圣","parent": "机械与运载学院" },
+			{"name": "颜运昌","parent": "机械与运载学院" },
+			{"name": "丁  飞","parent": "机械与运载学院" },
+			{"name": "干年妃","parent": "机械与运载学院" },
+			{"name": "尹汉锋","parent": "机械与运载学院" },
+			{"name": "白中浩","parent": "机械与运载学院" },
+			{"name": "成艾国","parent": "机械与运载学院" },
+			{"name": "李  凡","parent": "机械与运载学院" },
+			{"name": "杨沿平","parent": "机械与运载学院" },
+			{"name": "谷正气","parent": "机械与运载学院" },
+			{"name": "张冠军","parent": "机械与运载学院" },
+			{"name": "周  兵","parent": "机械与运载学院" },
+			{"name": "周  维","parent": "机械与运载学院" },
+			{"name": "胡朝辉","parent": "机械与运载学院" },
+			{"name": "钟志华","parent": "机械与运载学院" },
+			{"name": "莫旭辉","parent": "机械与运载学院" },
+			{"name": "袁苏洁","parent": "机械与运载学院" },
+			{"name": "徐  彪","parent": "机械与运载学院" },
+			{"name": "秦晓辉","parent": "机械与运载学院" },
+			{"name": "聂  昕","parent": "机械与运载学院" },
+			{"name": "黄  智","parent": "机械与运载学院" },
+			{"name": "黄沛丰","parent": "机械与运载学院" },
+			{"name": "曹立波","parent": "机械与运载学院" },
+			{"name": "彭伟光","parent": "机械与运载学院" },
+			{"name": "蒋彬辉","parent": "机械与运载学院" },
+			{"name": "谢小平","parent": "机械与运载学院" },
+			{"name": "谢  晖","parent": "机械与运载学院" },
+			{"name": "谢国涛","parent": "机械与运载学院" },
+			{"name": "雷  飞","parent": "机械与运载学院" },
+			{"name": "蔡  勇","parent": "机械与运载学院" },
+			{"name": "马寅杰","parent": "机械与运载学院" },
+			{"name": "邓元望","parent": "机械与运载学院" },
+			{"name": "朱  浩","parent": "机械与运载学院" },
+			{"name": "任承钦","parent": "机械与运载学院" },
+			{"name": "刘  云","parent": "机械与运载学院" },
+			{"name": "刘敬平","parent": "机械与运载学院" },
+			{"name": "杨小龙","parent": "机械与运载学院" },
+			{"name": "张全长","parent": "机械与运载学院" },
+			{"name": "张  峰","parent": "机械与运载学院" },
+			{"name": "陈  征","parent": "机械与运载学院" },
+			{"name": "陈敬炜","parent": "机械与运载学院" },
+			{"name": "罗宝军","parent": "机械与运载学院" },
+			{"name": "周菊光","parent": "机械与运载学院" },
+			{"name": "鄂加强","parent": "机械与运载学院" },
+			{"name": "龙小兵","parent": "机械与运载学院" },
+			{"name": "吕  浪","parent": "机械与运载学院" },
+			{"name": "胡思节","parent": "机械与运载学院" },
+	  ]
+	},
+	{
+	  "name": "材料与工程学院",
+	  "parent": "湖南大学",
+	  "children": [
+		  {"name": "丁元力","parent": "材料与工程学院" },
+		  {"name": "万  隆","parent": "材料与工程学院" },
+		  {"name": "马  超","parent": "材料与工程学院" },
+		  {"name": "王建锋","parent": "材料与工程学院" },
+		  {"name": "伍翠兰","parent": "材料与工程学院" },
+		  {"name": "刘洪波","parent": "材料与工程学院" },
+		  {"name": "刘海蓉","parent": "材料与工程学院" },
+		  {"name": "严红革","parent": "材料与工程学院" },
+		  {"name": "李  东","parent": "材料与工程学院" },
+		  {"name": "李  劲","parent": "材料与工程学院" },
+		  {"name": "李玉平","parent": "材料与工程学院" },
+		  {"name": "李轩科","parent": "材料与工程学院" },
+		  {"name": "杨  斌","parent": "材料与工程学院" },
+		  {"name": "肖平安","parent": "材料与工程学院" },
+		  {"name": "肖汉宁","parent": "材料与工程学院" },
+		  {"name": "吴正刚","parent": "材料与工程学院" },
+		  {"name": "张  泽","parent": "材料与工程学院" },
+		  {"name": "张  辉","parent": "材料与工程学院" },
+		  {"name": "张世国","parent": "材料与工程学院" },
+		  {"name": "张福全","parent": "材料与工程学院" },
+		  {"name": "陈  刚","parent": "材料与工程学院" },
+		  {"name": "陈小华","parent": "材料与工程学院" },
+		  {"name": "陈玉喜","parent": "材料与工程学院" },
+		  {"name": "陈江华","parent": "材料与工程学院" },
+		  {"name": "陈舒拉","parent": "材料与工程学院" },
+		  {"name": "周灵平","parent": "材料与工程学院" },
+		  {"name": "胡望宇","parent": "材料与工程学院" },
+		  {"name": "钟文斌","parent": "材料与工程学院" },
+		  {"name": "费又庆","parent": "材料与工程学院" },
+		  {"name": "袁武华","parent": "材料与工程学院" },
+		  {"name": "翁群红","parent": "材料与工程学院" },
+		  {"name": "高文理","parent": "材料与工程学院" },
+		  {"name": "郭坤琨","parent": "材料与工程学院" },
+		  {"name": "唐艳红","parent": "材料与工程学院" },
+		  {"name": "梁  逵","parent": "材料与工程学院" },
+		  {"name": "彭  平","parent": "材料与工程学院" },
+		  {"name": "彭  坤","parent": "材料与工程学院" },
+		  {"name": "韩  磊","parent": "材料与工程学院" },
+		  {"name": "程英亮","parent": "材料与工程学院" },
+		  {"name": "谭勇文","parent": "材料与工程学院" },
+		  {"name": "滕  杰","parent": "材料与工程学院" },
+		  {"name": "王  群","parent": "材料与工程学院" },
+		  {"name": "王祖勇","parent": "材料与工程学院" },
+		  {"name": "申  克","parent": "材料与工程学院" },
+		  {"name": "刘艳丽","parent": "材料与工程学院" },
+		  {"name": "李梓维","parent": "材料与工程学院" },
+		  {"name": "杨  雷","parent": "材料与工程学院" },
+		  {"name": "杨新国","parent": "材料与工程学院" },
+		  {"name": "张  妍","parent": "材料与工程学院" },
+		  {"name": "陈石林","parent": "材料与工程学院" },
+		  {"name": "陈吉华","parent": "材料与工程学院" },
+		  {"name": "陈旭丽","parent": "材料与工程学院" },
+		  {"name": "欧阳婷","parent": "材料与工程学院" },
+		  {"name": "胡爱平","parent": "材料与工程学院" },
+		  {"name": "袁定旺","parent": "材料与工程学院" },
+		  {"name": "夏伟军","parent": "材料与工程学院" },
+		  {"name": "夏笑虹","parent": "材料与工程学院" },
+		  {"name": "高朋召","parent": "材料与工程学院" },
+		  {"name": "黄凯兵","parent": "材料与工程学院" },
+		  {"name": "符立才","parent": "材料与工程学院" },
+		  {"name": "韩  飞","parent": "材料与工程学院" },
+		  {"name": "傅定发","parent": "材料与工程学院" },
+		  {"name": "解修强","parent": "材料与工程学院" },
+		  {"name": "王习文","parent": "材料与工程学院" },
+		  {"name": "方铁辉","parent": "材料与工程学院" },
+		  {"name": "朱家俊","parent": "材料与工程学院" },
+		  {"name": "刘  骥","parent": "材料与工程学院" },
+		  {"name": "刘小磐","parent": "材料与工程学院" },
+		  {"name": "刘智骁","parent": "材料与工程学院" },
+		  {"name": "李  伟","parent": "材料与工程学院" },
+		  {"name": "李  润","parent": "材料与工程学院" },
+		  {"name": "李洪来","parent": "材料与工程学院" },
+		  {"name": "杨武霖","parent": "材料与工程学院" },
+		  {"name": "杨建校","parent": "材料与工程学院" },
+		  {"name": "吝  楠","parent": "材料与工程学院" },
+		  {"name": "张  斌","parent": "材料与工程学院" },
+		  {"name": "陈  美","parent": "材料与工程学院" },
+		  {"name": "陈  惠","parent": "材料与工程学院" },
+		  {"name": "袁剑民","parent": "材料与工程学院" },
+		  {"name": "高  杨","parent": "材料与工程学院" },
+		  {"name": "郭文明","parent": "材料与工程学院" },
+		  {"name": "唐群力","parent": "材料与工程学院" },
+		  {"name": "黄博文","parent": "材料与工程学院" },
+		  {"name": "彭  鸣","parent": "材料与工程学院" },
+		  {"name": "喻楚英","parent": "材料与工程学院" },
+		  {"name": "李德意","parent": "材料与工程学院" },
+		  {"name": "吴有伍","parent": "材料与工程学院" },
+		  {"name": "陈  清","parent": "材料与工程学院" },
+		  {"name": "范长岭","parent": "材料与工程学院" },
+		  {"name": "赵新奇","parent": "材料与工程学院" },
+		  {"name": "祝宝军","parent": "材料与工程学院" },
+		  {"name": "徐海洋","parent": "材料与工程学院" },
+		  {"name": "涂川俊","parent": "材料与工程学院" },
+		  {"name": "苏  斌","parent": "材料与工程学院" },
+		  {"name": "杨  丽","parent": "材料与工程学院" },
+	  ]
+	}
+  ]  
+}  
+];  
+  
+  
+	var margin = [20, 120, 20, 120],
+	    width = document.getElementById("tree").offsetWidth,
+	    height = document.getElementById("tree").offsetHeight; 
+	      
+	var i = 0,  
+	    duration = 750,  
+	    root;  
+	  
+	var tree = d3.layout.tree()  
+	    .size([height, width]);  
+	  
+	var diagonal = d3.svg.diagonal()  
+	    .projection(function(d) { return [d.y, d.x]; });  
+	  
+	var zoom = d3.behavior.zoom().scaleExtent([0.1, 100]).on("zoom", zoomed);//添加放大缩小事件
+	  
+	var svg = d3.select("body").select("#tree").append("svg")
+	.call(zoom)//给svg绑定zoom事件
+	  .append("g")  
+	  .call(zoom)//给g绑定zoom事件
+	  .append("g")
+	    .attr("transform", "translate(" + margin[3] + "," + margin[0] + ")");  
+
+      
+	  root = json[0];  
+	  root.x0 = height / 2;  
+	  root.y0 = 0;  
+	  
+	  function collapse(d) {  
+	    if (d.children) {  
+	      d._children = d.children;  
+	      d._children.forEach(collapse);  
+	      d.children = null;  
+	    }  
+	  }  
+	  
+	  root.children.forEach(collapse);  
+	  update(root);  
+	  
+	function zoomed() {
+	    svg.attr("transform",
+	        "translate(" + zoom.translate() + ")" +
+	        "scale(" + zoom.scale() + ")"
+	    );
+	}
+	  
+	function update(source) {  
+	  
+	  // Compute the new tree layout.  
+	  var nodes = tree.nodes(root).reverse(),  
+	      links = tree.links(nodes);  
+	  
+	  // Normalize for fixed-depth.  
+	  nodes.forEach(function(d) { d.y = d.depth * 180; });  
+	  
+	  // Update the nodes…  
+	  var node = svg.selectAll("g.node")  
+	      .data(nodes, function(d) { return d.id || (d.id = ++i); });  
+	  
+	  // Enter any new nodes at the parent's previous position.  
+	  var nodeEnter = node.enter().append("g")  
+	      .attr("class", "node")  
+	      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })  
+	      .on("click", click);  
+	  
+	  nodeEnter.append("circle")  
+	      .attr("r", 1e-6)  
+	      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });  
+	  
+	  nodeEnter.append("text")  
+	      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })  
+	      .attr("dy", ".35em")  
+	      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })  
+	      .text(function(d) { return d.name; })  
+	      .style("fill-opacity", 1e-6);  
+	  
+	  var nodeUpdate = node.transition()  
+	      .duration(duration)  
+	      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });  
+	  
+	  nodeUpdate.select("circle")  
+	      .attr("r", 4.5)  
+	      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });  
+	  
+	  nodeUpdate.select("text")  
+	      .style("fill-opacity", 1);  
+	  
+	  var nodeExit = node.exit().transition()  
+	      .duration(duration)  
+	      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })  
+	      .remove();  
+	  
+	  nodeExit.select("circle")  
+	      .attr("r", 1e-6);  
+	  
+	  nodeExit.select("text")  
+	      .style("fill-opacity", 1e-6);  
+	  
+	  var link = svg.selectAll("path.link")  
+	      .data(links, function(d) { return d.target.id; });  
+	  
+	  link.enter().insert("path", "g")  
+	      .attr("class", "link")  
+	      .attr("d", function(d) {  
+	        var o = {x: source.x0, y: source.y0};  
+	        return diagonal({source: o, target: o});  
+	      });  
+	    
+	  link.transition()  
+	      .duration(duration)  
+	      .attr("d", diagonal);  
+	    
+	  link.exit().transition()  
+	      .duration(duration)  
+	      .attr("d", function(d) {  
+	        var o = {x: source.x, y: source.y};  
+	        return diagonal({source: o, target: o});  
+	      })  
+	      .remove();  
+	   
+	  nodes.forEach(function(d) {  
+	    d.x0 = d.x;  
+	    d.y0 = d.y;  
+	  });  
+	}  
+	  
+	function click(d) {  
+	  if (d.children) {  
+	    d._children = d.children;  
+	    d.children = null;  
+	  } else {  
+	    d.children = d._children;  
+	    d._children = null;  
+	  }  
+	  update(d);  
+	}  
+  
+</script>  
+</body>
+</html>

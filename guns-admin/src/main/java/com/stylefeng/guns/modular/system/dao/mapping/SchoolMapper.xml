@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.SchoolMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.School">
+        <id column="id" property="id" />
+        <result column="scname" property="scname" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, scname
+    </sql>
+
+    <select id="look_school" resultType="map">
+        select id,scname
+        from school where scname like CONCAT('%',#{condition},'%')
+
+    </select>
+    <select id="schoolcount" resultType="int">
+        select count(1)
+        scname from school where scname=#{scname}
+    </select>
+
+</mapper>

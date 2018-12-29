@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>school管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="School.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="SchoolTableToolbar" role="group">
+                            @if(shiro.hasPermission("/school/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="School.openAddSchool()"/>
+                            @}
+                            @if(shiro.hasPermission("/school/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="School.openSchoolDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/school/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="School.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="SchoolTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/school/school/school.js"></script>
+@}
