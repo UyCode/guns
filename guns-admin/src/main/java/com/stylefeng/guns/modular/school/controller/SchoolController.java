@@ -60,7 +60,7 @@ public class SchoolController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        if(condition==null) {
+        if(condition==null || condition.equals("")) {
             condition="";
         }
         return schoolService.look_school(condition);
@@ -75,7 +75,9 @@ public class SchoolController extends BaseController {
         if(schoolService.schoolcount(school.getScname())!=0){
             return  "学校名称重复";
         }
-
+        if(schoolService.equals("")){
+            return  "学校不能为空！";
+        }
         schoolService.insert(school);
         return "添加成功";
     }

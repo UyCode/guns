@@ -43,7 +43,13 @@ public class School extends Model<School> {
     }
 
     public void setScname(String scname) {
-        this.scname = scname;
+        if(scname ==null || scname.equals("")){
+
+        }
+        else{
+            this.scname = scname;
+        }
+
     }
 
     @Override

@@ -63,7 +63,7 @@ SchoolInfoDlg.addSubmit = function() {
         window.parent.School.table.refresh();
         SchoolInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        Feng.error("添加失败!" + /*data.responseJSON.message + */"!");
     });
     ajax.set(this.schoolInfoData);
     ajax.start();
