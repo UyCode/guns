@@ -15,7 +15,7 @@ Feedback.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
             {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
-            {title: '反馈用户id', field: 'userid', visible: false, align: 'center', valign: 'middle'},
+            {title: '反馈用户地址', field: 'userid', visible: false, align: 'center', valign: 'middle'},
             {title: '反馈内容', field: 'fbcontent', visible: true, align: 'center', valign: 'middle'},
             {title: '反馈时间', field: 'fbtime', visible: true, align: 'center', valign: 'middle'}
     ];
@@ -41,7 +41,7 @@ Feedback.check = function () {
 Feedback.openAddFeedback = function () {
     var index = layer.open({
         type: 2,
-        title: '添加feedback',
+        title: '添加反馈',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -57,7 +57,7 @@ Feedback.openFeedbackDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: 'feedback详情',
+            title: '反馈详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,

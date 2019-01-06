@@ -41,6 +41,8 @@ public class Teacher extends Model<Teacher> {
      */
     private String coname;
 
+    public int status =1;
+
 
     public Integer getId() {
         return id;
@@ -55,7 +57,11 @@ public class Teacher extends Model<Teacher> {
     }
 
     public void setTname(String tname) {
-        this.tname = tname;
+        if(tname ==null || tname.equals("")){
+            status = 0;
+        }else{
+            this.tname = tname;
+        }
     }
 
     public String getTcontent() {
@@ -63,7 +69,11 @@ public class Teacher extends Model<Teacher> {
     }
 
     public void setTcontent(String tcontent) {
-        this.tcontent = tcontent;
+        if(tcontent ==null || tcontent.equals("")){
+            status = 0;
+        }else{
+            this.tcontent = tcontent;
+        }
     }
 
     public String getScname() {
@@ -71,7 +81,12 @@ public class Teacher extends Model<Teacher> {
     }
 
     public void setScname(String scname) {
-        this.scname = scname;
+        if(scname ==null || scname.equals("") || scname.equals("undefined")){
+            status = 0;
+        }else{
+            this.scname = scname;
+        }
+
     }
 
     public String getConame() {
@@ -79,7 +94,11 @@ public class Teacher extends Model<Teacher> {
     }
 
     public void setConame(String coname) {
-        this.coname = coname;
+        if(coname == null || coname.equals("") || coname.equals("undefined")){
+            status = 0;
+        }else{
+            this.coname = coname;
+        }
     }
 
     @Override

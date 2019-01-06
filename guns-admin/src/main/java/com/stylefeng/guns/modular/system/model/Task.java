@@ -52,7 +52,9 @@ public class Task extends Model<Task> {
     /**
      * 网址
      */
-    private String web;
+    //private String web;
+
+    public int status = 1;
 
 
     public Integer getId() {
@@ -100,7 +102,11 @@ public class Task extends Model<Task> {
     }
 
     public void setScname(String scname) {
-        this.scname = scname;
+        if(scname ==null || scname.equals("") || scname.equals("undefined")){
+            status = 0;
+        }else{
+            this.scname = scname;
+        }
     }
 
     public String getConame() {
@@ -108,17 +114,22 @@ public class Task extends Model<Task> {
     }
 
     public void setConame(String coname) {
-        this.coname = coname;
+        if(coname ==null || coname.equals("") || coname.equals("undefined")){
+            status = 0;
+        }else{
+            this.coname = coname;
+        }
+
     }
 
-    public String getWeb() {
+    /*public String getWeb() {
         return web;
     }
 
-    public void setWeb(String web) {
+    //public void setWeb(String web) {
         this.web = web;
     }
-
+    */
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -134,7 +145,6 @@ public class Task extends Model<Task> {
         ", flag=" + flag +
         ", scname=" + scname +
         ", coname=" + coname +
-        ", web=" + web +
         "}";
     }
 }

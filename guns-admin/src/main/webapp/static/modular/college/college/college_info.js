@@ -61,11 +61,11 @@ CollegeInfoDlg.addSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/college/add", function(data){
-        Feng.success(data+"!!!!");
+        Feng.success(data);
         window.parent.College.table.refresh();
         CollegeInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        Feng.error("错误：不能添加空数据!-->" + data.responseJSON.message + "!");
     });
     ajax.set(this.collegeInfoData);
     ajax.start();
@@ -81,7 +81,7 @@ CollegeInfoDlg.editSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/college/update", function(data){
-        Feng.success("修改成功!");
+        Feng.success(data);
         window.parent.College.table.refresh();
         CollegeInfoDlg.close();
     },function(data){
@@ -95,12 +95,8 @@ $(function() {
     $("#scname").val($("#scnameValue").val());
     var ajaxx =new $ax(Feng.ctxPath +"/school/list",function(data){
         var school_list=data;
-        console.log(school_list);
-        $("#scname").append("<option value='"+$("#scnameValue").val()+"'>"+$("#scnameValue").val()+"</option>");
         for(var temp in school_list){
-            if($("#scnameValue").val()!=school_list[temp].scname){
                 $("#scname").append("<option value='"+school_list[temp].scname+"'>"+school_list[temp].scname+"</option>");
-            }
         }
     },function (data){
         Feng.error("传参失败！"+data.responseJSON.message+"!");

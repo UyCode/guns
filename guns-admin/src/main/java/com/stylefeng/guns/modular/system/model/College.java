@@ -37,6 +37,8 @@ public class College extends Model<College> {
      */
     private String web;
 
+    public int status = 1;
+
 
     public Integer getId() {
         return id;
@@ -51,7 +53,11 @@ public class College extends Model<College> {
     }
 
     public void setConame(String coname) {
-        this.coname = coname;
+        if(coname == null || coname.equals("")){
+            status = 0;
+        }else{
+            this.coname = coname;
+        }
     }
 
     public String getScname() {
@@ -59,7 +65,11 @@ public class College extends Model<College> {
     }
 
     public void setScname(String scname) {
-        this.scname = scname;
+        if(scname == null || scname.equals("")){
+            status = 0;
+        }else {
+            this.scname = scname;
+        }
     }
 
     public String getWeb() {
@@ -67,7 +77,11 @@ public class College extends Model<College> {
     }
 
     public void setWeb(String web) {
-        this.web = web;
+        if(web == null || web.equals("")){
+            status = 0;
+        }else {
+            this.web = web;
+        }
     }
 
     @Override

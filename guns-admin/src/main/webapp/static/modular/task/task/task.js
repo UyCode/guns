@@ -44,7 +44,7 @@ Task.check = function () {
 Task.openAddTask = function () {
     var index = layer.open({
         type: 2,
-        title: '添加task',
+        title: '添加任务',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -60,7 +60,7 @@ Task.openTaskDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: 'task详情',
+            title: '任务详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,

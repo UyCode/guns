@@ -59,11 +59,11 @@ SchoolInfoDlg.addSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/school/add", function(data){
-        Feng.success(data+"!!!");
+        Feng.success(data);
         window.parent.School.table.refresh();
         SchoolInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + /*data.responseJSON.message + */"!");
+        Feng.error("错误：不能添加空数据!!--->" + data.responseJSON.message + "!");
     });
     ajax.set(this.schoolInfoData);
     ajax.start();
@@ -79,7 +79,7 @@ SchoolInfoDlg.editSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/school/update", function(data){
-        Feng.success("修改成功!");
+        Feng.success(data);
         window.parent.School.table.refresh();
         SchoolInfoDlg.close();
     },function(data){

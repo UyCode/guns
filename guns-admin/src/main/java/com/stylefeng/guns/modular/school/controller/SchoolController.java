@@ -22,6 +22,9 @@ import com.stylefeng.guns.modular.school.service.ISchoolService;
 @RequestMapping("/school")
 public class SchoolController extends BaseController {
 
+    School scstate = new School();
+    int newstate = scstate.status;  //获取信息状态。
+
     private String PREFIX = "/school/school/";
 
     @Autowired
@@ -75,11 +78,17 @@ public class SchoolController extends BaseController {
         if(schoolService.schoolcount(school.getScname())!=0){
             return  "学校名称重复";
         }
-        if(schoolService.equals("")){
+        if(schoolService.equals("") || schoolService.equals(" ")){
             return  "学校不能为空！";
         }
-        schoolService.insert(school);
-        return "添加成功";
+
+        if(newstate == 0){
+            return "添加失败！";
+        }else{
+            newstate = 1;
+            schoolService.insert(school);
+            return "添加成功！";
+        }
     }
 
     /**
@@ -99,7 +108,11 @@ public class SchoolController extends BaseController {
     @ResponseBody
     public Object update(School school) {
         schoolService.updateById(school);
-        return SUCCESS_TIP;
+        if(newstate == 0){
+            return "修改失败！";
+        }else{
+            return "修改成功！";
+        }
     }
 
     /**

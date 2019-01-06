@@ -22,7 +22,7 @@ public class MobileMessageSend {
     private static final String APP_KEY="8753d009f9f290cead7e6a1fdba664af";//账号
     private static final String APP_SECRET="e51ca6250e27";//密钥
     private static final String NONCE="123456";//随机数
-    private static final String MOULD_ID="9514557";//模板ID
+    private static final String MOULD_ID="9344412";//模板ID
 
     public static String sendMsg(String phone) throws IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();

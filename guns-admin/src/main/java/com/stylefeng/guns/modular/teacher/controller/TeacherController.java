@@ -22,6 +22,9 @@ import com.stylefeng.guns.modular.teacher.service.ITeacherService;
 @RequestMapping("/teacher")
 public class TeacherController extends BaseController {
 
+    Teacher tstate = new Teacher();
+    int newtstate = tstate.status;
+
     private String PREFIX = "/teacher/teacher/";
 
     @Autowired
@@ -80,7 +83,12 @@ public class TeacherController extends BaseController {
     @ResponseBody
     public Object add(Teacher teacher) {
         teacherService.insert(teacher);
-        return SUCCESS_TIP;
+        if(newtstate == 0) {
+            return "添加失败！";
+        }
+        else {
+            return "添加成功！";
+        }
     }
 
     /**
@@ -99,8 +107,14 @@ public class TeacherController extends BaseController {
     @RequestMapping(value = "/update")
     @ResponseBody
     public Object update(Teacher teacher) {
+
         teacherService.updateById(teacher);
-        return SUCCESS_TIP;
+        if(newtstate == 0) {
+            return "修改失败！";
+        }
+        else {
+            return "修改成功！";
+        }
     }
 
     /**

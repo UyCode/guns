@@ -29,6 +29,8 @@ public class School extends Model<School> {
      */
     private String scname;
 
+    public int status = 1;
+
 
     public Integer getId() {
         return id;
@@ -38,13 +40,11 @@ public class School extends Model<School> {
         this.id = id;
     }
 
-    public String getScname() {
-        return scname;
-    }
+    public String getScname() { return scname; }
 
     public void setScname(String scname) {
-        if(scname ==null || scname.equals("")){
-
+        if(scname ==null || scname.equals("")|| scname.equals(" ")){
+            status = 0;
         }
         else{
             this.scname = scname;

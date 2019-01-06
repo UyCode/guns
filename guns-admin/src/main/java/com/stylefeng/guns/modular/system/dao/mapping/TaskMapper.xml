@@ -11,15 +11,15 @@
         <result column="flag" property="flag" />
         <result column="scname" property="scname" />
         <result column="coname" property="coname" />
+        <result column="status" property="status" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, stime, etime, settime, flag, scname, coname
+        id, stime, etime, settime, flag, scname, coname,status
     </sql>
     <select id="look_task" resultType="map">
         select * from task a
-
     </select>
 
 </mapper>

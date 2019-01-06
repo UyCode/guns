@@ -22,6 +22,9 @@ import com.stylefeng.guns.modular.college.service.ICollegeService;
 @RequestMapping("/college")
 public class CollegeController extends BaseController {
 
+    College costate = new College();
+    int newstate = costate.status;
+
     private String PREFIX = "/college/college/";
 
     @Autowired
@@ -88,8 +91,13 @@ public class CollegeController extends BaseController {
             return "学院重复";
         }
 
-        collegeService.insert(college);
-        return "添加成功";
+        if(newstate == 0){
+            return "添加失败！";
+        }else{
+            newstate = 1;
+            collegeService.insert(college);
+            return "添加成功！";
+        }
     }
 
     /**
@@ -108,8 +116,16 @@ public class CollegeController extends BaseController {
     @RequestMapping(value = "/update")
     @ResponseBody
     public Object update(College college) {
-        collegeService.updateById(college);
-        return SUCCESS_TIP;
+        if(collegeService.collgecount(college.getConame())!=0){
+            return "学院重复";
+        }
+        if(newstate == 0){
+            return "修改失败！";
+        }else{
+            newstate = 1;
+            collegeService.updateById(college);
+            return "修改成功！";
+        }
     }
 
     /**

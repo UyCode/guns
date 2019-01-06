@@ -38,6 +38,8 @@ public class Feedback extends Model<Feedback> {
      */
     private Date fbtime;
 
+    public int status = 1;    //状态，用来验证空数据。
+
 
     public Integer getId() {
         return id;
@@ -60,7 +62,11 @@ public class Feedback extends Model<Feedback> {
     }
 
     public void setFbcontent(String fbcontent) {
-        this.fbcontent = fbcontent;
+        if(fbcontent == null || fbcontent.equals("")){
+            status = 0;
+        }else{
+            this.fbcontent = fbcontent;
+        }
     }
 
     public Date getFbtime() {

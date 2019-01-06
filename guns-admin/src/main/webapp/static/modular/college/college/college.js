@@ -16,6 +16,7 @@ College.initColumn = function () {
         {field: 'selectItem', radio: true},
             {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
             {title: '学院名称', field: 'coname', visible: true, align: 'center', valign: 'middle'},
+            {title: '关系', field: 'relationship', visible: true, align: 'center', valign: 'middle'},
             {title: '学校名称', field: 'scname', visible: true, align: 'center', valign: 'middle'},
             {title: '网址', field: 'web', visible: true, align: 'center', valign: 'middle'}
     ];
@@ -41,7 +42,7 @@ College.check = function () {
 College.openAddCollege = function () {
     var index = layer.open({
         type: 2,
-        title: '添加college',
+        title: '添加学院',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -57,7 +58,7 @@ College.openCollegeDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: 'college详情',
+            title: '学院详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,

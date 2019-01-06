@@ -61,11 +61,11 @@ FeedbackInfoDlg.addSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/feedback/add", function(data){
-        Feng.success("添加成功!");
+        Feng.success(data);
         window.parent.Feedback.table.refresh();
         FeedbackInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        Feng.error("错误：不能添加空反馈!--->" + data.responseJSON.message + "!");
     });
     ajax.set(this.feedbackInfoData);
     ajax.start();
@@ -81,7 +81,7 @@ FeedbackInfoDlg.editSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/feedback/update", function(data){
-        Feng.success("修改成功!");
+        Feng.success(data);
         window.parent.Feedback.table.refresh();
         FeedbackInfoDlg.close();
     },function(data){

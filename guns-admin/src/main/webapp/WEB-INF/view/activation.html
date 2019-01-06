@@ -34,7 +34,7 @@
             var pwd1 = $('input[name="password"]').val();
             var pwd2 = $('input[name="pwd2"]').val();
             if( pwd1 == pwd2 ){
-                $("#tishi").html("两次密码相同").css("color","green");;
+                $("#tishi").html("两次密码相同").css("color","green");
                 $('input[name="tijiao"]').removeAttr("disabled");
             }else {
                 $("#tishi").html("两次密码不相同").css("color","red");
@@ -52,19 +52,17 @@
                 url:contextPath+"/achieve?phone="+phone.value,
                 dataType:"text",
                 success:function(data){
-                    if(data==1){
+                    if(data == 1){
                         alert("短信发送成功！！");
                     }else{
                         alert("短信发送失败！！");
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
-                    alert("短信发送失败！！");
+                    alert("短信发送失败！！！");
                 }
             });
         }
-
-
 
     </script>
 
@@ -102,16 +100,10 @@
                 <input type="password" name="pwd2" class="form-control" placeholder="请再次输入密码" required="" onkeyup="validate()"><span id="tishi"></span>
             </div>
 
-
-
             <input type="submit" name="tijiao"  class="btn btn-primary block full-width m-b" value="确认">
         </form>
     </div>
 </div>
-
-
-
-
 </body>
 
 

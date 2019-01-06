@@ -8,11 +8,13 @@
         <result column="coname" property="coname" />
         <result column="scname" property="scname" />
         <result column="web" property="web" />
+        <result column="status" property="status" />
+        <result column="relationship" property="relationship" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, coname, scname, web
+        id, coname, scname, web,status,relationship
     </sql>
 
     <select id="look_college" resultType="map">

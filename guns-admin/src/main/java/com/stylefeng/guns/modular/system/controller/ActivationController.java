@@ -51,7 +51,7 @@ public class ActivationController extends BaseController {
             PrintWriter out = getHttpServletResponse().getWriter();
             String str = MobileMessageSend.sendMsg(phone);
             System.out.println(str);
-            if ("success".equals(str)) {
+            if (str.equals("success")) {
                 int i= 1;
                 out.print(i);
             } else {
@@ -69,7 +69,7 @@ public class ActivationController extends BaseController {
      * 点击激活时执行的动作
      */
     @RequestMapping(value = "/activation", method = RequestMethod.POST)
-    public String activationVali(Model model){
+    public String activationValid(Model model){
         User user = null;
 
         //获取激活表单数据
@@ -90,27 +90,26 @@ public class ActivationController extends BaseController {
         System.out.println("-----------------------------");
         System.out.println(activation);
         System.out.println("-----------------------------");
-        if(activation!=0){
-            model.addAttribute("xxx", "该账号已经激活，请直接登陆使用！");
-            return "/login.html";
-        }
+        //if(activation!=0) {
+            //model.addAttribute("xxx", "该账号已经激活，请直接登陆使用！");
+            //return "/login.html";
 
 
-        //接收验证码
-        try {
-            String str = MobileMessageCheck.checkMsg(phone, phonekaptcha);
-            if ("success".equals(str)) {
-                System.out.println("验证成功！");
-            } else {
-                System.out.println("验证失败！");
-                model.addAttribute("xxx", "短信验证失败，无法修改！");
-                return "/activation.html";
+            //接收验证码
+            try {
+                String str = MobileMessageCheck.checkMsg(phone, phonekaptcha);
+                if ("success".equals(str)) {
+                    System.out.println("验证成功！");
+                } else {
+                    System.out.println("验证失败！");
+                    model.addAttribute("xxx", "短信验证失败，无法修改！");
+                    return "/activation.html";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-
+        //}
         if (user != null) {
             if (phone.equals(user.getPhone())) {
                 System.out.println(phone);

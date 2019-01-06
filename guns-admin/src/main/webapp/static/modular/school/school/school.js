@@ -14,7 +14,7 @@ var School = {
 School.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: 'id', field: 'id', visible: true, align: 'center', valign: 'middle'},
+            {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
             {title: '学校名称', field: 'scname', visible: true, align: 'center', valign: 'middle'}
     ];
 };
@@ -39,7 +39,7 @@ School.check = function () {
 School.openAddSchool = function () {
     var index = layer.open({
         type: 2,
-        title: '添加school',
+        title: '添加学校',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -55,7 +55,7 @@ School.openSchoolDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: 'school详情',
+            title: '学校详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,

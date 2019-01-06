@@ -68,7 +68,7 @@ TaskInfoDlg.addSubmit = function() {
         window.parent.Task.table.refresh();
         TaskInfoDlg.close();
     },function(data){
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        Feng.error("错误：不能有空项!--->" + data.responseJSON.message + "!");
     });
     ajax.set(this.taskInfoData);
     ajax.start();
@@ -84,7 +84,7 @@ TaskInfoDlg.editSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/task/update", function(data){
-        Feng.success("修改成功!");
+        Feng.success(data);
         window.parent.Task.table.refresh();
         TaskInfoDlg.close();
     },function(data){
@@ -98,12 +98,8 @@ $(function() {
     $("#scname").val($("#scnameValue").val());
     var ajaxx =new $ax(Feng.ctxPath +"/school/list",function(data){
         var school_list=data;
-        console.log(school_list);
-        $("#scname").append("<option value='"+$("#scnameValue").val()+"'>"+$("#scnameValue").val()+"</option>");
         for(var temp in school_list){
-            if($("#scnameValue").val()!=school_list[temp].scname){
                 $("#scname").append("<option value='"+school_list[temp].scname+"'>"+school_list[temp].scname+"</option>");
-            }
         }
     },function (data){
         Feng.error("传参失败！"+data.responseJSON.message+"!");
@@ -113,12 +109,8 @@ $(function() {
     $("#coname").val($("#conameValue").val());
     var ajaxx =new $ax(Feng.ctxPath +"/college/list",function(data){
         var college_list=data;
-        console.log(college_list);
-        $("#coname").append("<option value='"+$("#conameValue").val()+"'>"+$("#conameValue").val()+"</option>");
         for(var temp in college_list){
-            if($("#conameValue").val()!=college_list[temp].coname){
                 $("#coname").append("<option value='"+college_list[temp].coname+"'>"+college_list[temp].coname+"</option>");
-            }
         }
     },function (data){
         Feng.error("传参失败！"+data.responseJSON.message+"!");

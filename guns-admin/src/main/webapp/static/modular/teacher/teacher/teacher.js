@@ -16,9 +16,10 @@ Teacher.initColumn = function () {
         {field: 'selectItem', radio: true},
             {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
             {title: '教师姓名', field: 'tname', visible: true, align: 'center', valign: 'middle'},
-            {title: '教师信息', field: 'tcontent', visible: true, align: 'center', valign: 'middle'},
+            {title: '关系', field: 'relationship', visible: true, align: 'center', valign: 'middle'},
+            {title: '学院名称', field: 'coname', visible: true, align: 'center', valign: 'middle'},
             {title: '学校名称', field: 'scname', visible: true, align: 'center', valign: 'middle'},
-            {title: '学院名称', field: 'coname', visible: true, align: 'center', valign: 'middle'}
+            {title: '教师信息', field: 'tcontent', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
@@ -42,7 +43,7 @@ Teacher.check = function () {
 Teacher.openAddTeacher = function () {
     var index = layer.open({
         type: 2,
-        title: '添加teacher',
+        title: '添加教师',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -58,7 +59,7 @@ Teacher.openTeacherDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: 'teacher详情',
+            title: '教师详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
@@ -74,7 +75,7 @@ Teacher.openTeacherDetail = function () {
 Teacher.zstp = function () {
         var index = layer.open({
             type: 2,
-            title: 'teacher详情',
+            title: '知识图谱展示',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,

@@ -9,15 +9,17 @@
         <result column="tcontent" property="tcontent" />
         <result column="scname" property="scname" />
         <result column="coname" property="coname" />
+        <result column="status" property="status" />
+        <result column="relationship" property="relationship" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, tname, tcontent, scname, coname
+        id, tname, tcontent, scname, coname,status,relationship
     </sql>
 
     <select id="look_teacher" resultType="map">
-        select id,tname,tcontent,scname,coname
+        select id,tname,tcontent,scname,coname,relationship
         from teacher where tname like CONCAT('%',#{condition},'%')
 
     </select>

@@ -25,6 +25,9 @@ import java.util.Date;
 @RequestMapping("/task")
 public class TaskController extends BaseController {
 
+    Task tstate = new Task();
+    int newstate = tstate.status;
+
     private String PREFIX = "/task/task/";
 
     @Autowired
@@ -81,7 +84,12 @@ public class TaskController extends BaseController {
             return "开始时间应在当前时间之后,请重新设置";
         }
         taskService.insert(task);
-        return "创建成功";
+        if(newstate == 0){
+            return "添加失败！";
+        }else{
+            return "添加成功！";
+        }
+
     }
 
     /**
@@ -101,7 +109,12 @@ public class TaskController extends BaseController {
     @ResponseBody
     public Object update(Task task) {
         taskService.updateById(task);
-        return SUCCESS_TIP;
+        if(newstate == 0){
+            return "修改失败！";
+        }else{
+            return "修改成功！";
+        }
+
     }
 
     /**

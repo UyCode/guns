@@ -22,6 +22,9 @@ import com.stylefeng.guns.modular.feedback.service.IFeedbackService;
 @RequestMapping("/feedback")
 public class FeedbackController extends BaseController {
 
+    Feedback fbstate = new Feedback();
+    int newstate = fbstate.status;
+
     private String PREFIX = "/feedback/feedback/";
 
     @Autowired
@@ -70,7 +73,11 @@ public class FeedbackController extends BaseController {
     @ResponseBody
     public Object add(Feedback feedback) {
         feedbackService.insert(feedback);
-        return SUCCESS_TIP;
+        if(newstate == 0){
+            return "添加失败！";
+        }else{
+            return "添加成功！";
+        }
     }
 
     /**
@@ -90,7 +97,11 @@ public class FeedbackController extends BaseController {
     @ResponseBody
     public Object update(Feedback feedback) {
         feedbackService.updateById(feedback);
-        return SUCCESS_TIP;
+        if(newstate == 0){
+            return "修改失败！";
+        }else{
+            return "修改成功！";
+        }
     }
 
     /**
